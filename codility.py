@@ -92,3 +92,83 @@ def parity_degree(N :int) -> int:
             max_power = max(max_power, k)
 
     return max_power
+
+
+'''
+    Write a function:
+
+    def solution(A)
+
+    that, given an array A of N integers, returns the smallest positive integer (greater than 0) that does not occur in A.
+
+    For example, given A = [1, 3, 6, 4, 1, 2], the function should return 5.
+
+    Given A = [1, 2, 3], the function should return 4.
+
+    Given A = [−1, −3], the function should return 1.
+
+    Write an efficient algorithm for the following assumptions:
+
+    N is an integer within the range [1..100,000];
+    each element of array A is an integer within the range [−1,000,000..1,000,000].
+'''
+
+def smallest_positive(A: list):
+    
+    biggest = -1
+    for i in A:
+        if i > 0:
+            biggest = max(biggest, i)
+
+    if biggest <= 0:
+        return 1  
+
+    for i in range(1, 100000):
+        if i not in A:
+            return i
+
+
+''''''
+def sum_multiple_4(A: list): 
+
+    multiple_4 = list()
+    for i in A:
+        if i % 4 == 0:
+            multiple_4.append(i)
+
+    return sum(multiple_4)
+
+'''
+    There are N coins, each showing either heads or tails. We would like all the coins to form a sequence of 
+    alternating heads and tails. What is the minimum number of coins that must be reversed to achieve this?
+    
+    Write a function:
+    def solution (A)
+
+    that, given an array A consisting of N integers representing the coins, returns the minimum number of coins that 
+    must be reversed. Consecutive elements of array A represent consecutive coins and contain either a 0 (heads) or a 
+    1 (tails).
+
+    Examples:
+    1. Given array A = [1, 0, 1, 0, 1, 1], the function should return 1. After reversing the sixth coin, we achieve an 
+    alternating sequence of coins [1, 0, 1, 0, 1, 0]. 
+    2. Given array A = [1, 1, 0, 1, 1], the function should return 2. After reversing the first and fifth coins, we 
+    achieve an alternating sequence [0, 1, 0, 1, 0]. 
+    3. Given array A = [0, 1, 0], the function should return O. The sequence of coins is already alternating. 
+    4. Given array A = [0, 1, 1, 0], the function should return 2. We can reverse the first and second coins to get the 
+    sequence: [1, 0, 1, 0].
+    
+    Assume that:
+        • N is an integer within the range [1..100]; 
+        • each element of array A is an integer that can have one of the following values: 0, 1.
+
+    In your solution, focus on correctness. The performance of your solution will not be the focus of the assessment.
+'''
+
+def flip_heads_or_tails(A: list):
+
+    return min(sum(n ==  i % 2      for i, n in enumerate(A)),
+               sum(n == (i + 1) % 2 for i, n in enumerate(A)))
+
+
+
