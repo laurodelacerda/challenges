@@ -76,8 +76,6 @@ def braille_translation(plaintext :str):
     braille = ""
     for i in plaintext:
 
-        print(i)
-
         if i.isupper():
             braille += braille_codes.get('cap')
 
